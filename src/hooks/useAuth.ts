@@ -11,20 +11,23 @@ export const useAuth = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const login = useCallback((id: string) => {
-    setLoading(true);
-    axios
-      .get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then((res) => {
-        if (res.data) {
-          toastMessage({ title: "ログインしました", status: "success" });
-          history.push("/home");
-        } else {
-          toastMessage({ title: "ユーザーが見つかりません", status: "error" });
-        }
-      })
-      .catch(() => toastMessage({ title: "ログインできません", status: "error" }))
-      .finally(() => setLoading(false));
-  }, []);
+  const login = useCallback(
+    (id: string) => {
+      setLoading(true);
+      axios
+        .get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .then((res) => {
+          if (res.data) {
+            toastMessage({ title: "ログインしました", status: "success" });
+            history.push("/home");
+          } else {
+            toastMessage({ title: "ユーザーが見つかりません", status: "error" });
+          }
+        })
+        .catch(() => toastMessage({ title: "ログインできません", status: "error" }))
+        .finally(() => setLoading(false));
+    },
+    [toastMessage, history]
+  );
   return { login, loading };
 };

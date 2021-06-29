@@ -19,7 +19,7 @@ export const useMessage = () => {
         status
       });
     },
-    []
+    [toast]
   );
   return { toastMessage };
 };

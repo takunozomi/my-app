@@ -1,7 +1,7 @@
 import { memo, VFC } from "react";
 
 import { Button } from "@chakra-ui/button";
-import { Drawer, DrawerOverlay, DrawerBody, DrawerContent, useDisclosure } from "@chakra-ui/react";
+import { Drawer, DrawerOverlay, DrawerBody, DrawerContent } from "@chakra-ui/react";
 
 type Props = {
   isOpen: boolean;
